@@ -1,4 +1,5 @@
 build
+dist
 apikey.txt
 venv
 .idea
