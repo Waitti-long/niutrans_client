@@ -1,3 +1,5 @@
 build
 apikey.txt
 venv
+.idea
+__pycache__
