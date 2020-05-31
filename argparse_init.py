@@ -1,4 +1,5 @@
 from argparse import ArgumentParser
+import sys
 
 
 def init():
@@ -10,5 +11,11 @@ def init():
     parser.add_argument("--auto", action="store_true", help="auto choose origin language")
     parser.add_argument("--list", action="store_true", help="list all supported language")
     parser.add_argument("--show", action="store_true", help="show from language and to language")
-    parser.add_argument("src_text", help="src_text")
-    return parser.parse_args()
+    parser.add_argument("-p", action="store_true", help="accept pipe data")
+    pipe = "-p" in sys.argv
+    if not pipe:
+        parser.add_argument("src_text", help="src_text")
+    args = parser.parse_args()
+    if pipe:
+        args.src_text = sys.stdin.read()
+    return args
